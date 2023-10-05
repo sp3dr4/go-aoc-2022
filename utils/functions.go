@@ -6,6 +6,23 @@ import (
 	"io"
 )
 
+func All[T any](items []T, fn func(T) bool) bool {
+	for _, v := range items {
+		if !fn(v) {
+			return false
+		}
+	}
+	return true
+}
+
+func Map[T, U any](s []T, f func(T) U) []U {
+	r := make([]U, len(s))
+	for i, v := range s {
+		r[i] = f(v)
+	}
+	return r
+}
+
 // Greatest Common Denominator
 func Gcd(a, b int64) int64 {
 	for b != 0 {
