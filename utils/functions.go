@@ -23,6 +23,17 @@ func Map[T, U any](s []T, f func(T) U) []U {
 	return r
 }
 
+func AbsInt(x int) int {
+	return absDiffInt(x, 0)
+}
+
+func absDiffInt(x, y int) int {
+	if x < y {
+		return y - x
+	}
+	return x - y
+}
+
 // Greatest Common Denominator
 func Gcd(a, b int64) int64 {
 	for b != 0 {
