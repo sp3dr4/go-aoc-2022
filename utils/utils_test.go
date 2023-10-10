@@ -8,9 +8,9 @@ import (
 
 func TestGcd(t *testing.T) {
 	var tests = []struct {
-		a      int64
-		b      int64
-		answer int64
+		a      int
+		b      int
+		answer int
 	}{
 		{1, 1, 1},
 		{10, 5, 5},
@@ -27,9 +27,9 @@ func TestGcd(t *testing.T) {
 
 func TestLcm(t *testing.T) {
 	var tests = []struct {
-		a      int64
-		b      int64
-		answer int64
+		a      int
+		b      int
+		answer int
 	}{
 		{1, 1, 1},
 		{10, 5, 10},

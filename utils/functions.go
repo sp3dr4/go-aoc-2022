@@ -2,8 +2,10 @@ package utils
 
 import (
 	"bufio"
+	"cmp"
 	"fmt"
 	"io"
+	"sort"
 )
 
 func All[T any](items []T, fn func(T) bool) bool {
@@ -45,6 +47,26 @@ func Chunks(s string, chunkSize int) []string {
 	return chunks
 }
 
+func SortedKeys[K cmp.Ordered, V any](m map[K]V) []K {
+	keys := make([]K, len(m))
+	i := 0
+	for k := range m {
+		keys[i] = k
+		i++
+	}
+	sort.Slice(keys, func(i, j int) bool { return keys[i] < keys[j] })
+	return keys
+}
+
+func Multiply(args ...int) int {
+	acc := 1
+	for _, n := range args {
+		acc *= n
+	}
+
+	return acc
+}
+
 func AbsInt(x int) int {
 	return absDiffInt(x, 0)
 }
@@ -57,7 +79,7 @@ func absDiffInt(x, y int) int {
 }
 
 // Greatest Common Denominator
-func Gcd(a, b int64) int64 {
+func Gcd(a, b int) int {
 	for b != 0 {
 		a, b = b, a%b
 	}
@@ -66,7 +88,7 @@ func Gcd(a, b int64) int64 {
 }
 
 // Least Common Multiple
-func Lcm(a, b int64) int64 {
+func Lcm(a, b int) int {
 	return a * b / Gcd(a, b)
 }
 
